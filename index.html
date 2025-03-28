@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fedswtsmp Minecraft Server</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Animated Background Gradient */
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(45deg, #0f172a, #1e293b);
+            }
+
+            50% {
+                background: linear-gradient(45deg, #1e293b, #334155);
+            }
+
+            100% {
+                background: linear-gradient(45deg, #0f172a, #1e293b);
+            }
+        }
+
+        body {
+            animation: gradientAnimation 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        /* Falling Leaves Animation */
+        .falling-images img {
+            position: absolute;
+            opacity: 0;
+            animation: fall 10s linear infinite, wind 10s ease-in-out infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes wind {
+            0% {
+                left: 10%;
+            }
+
+            25% {
+                left: 20%;
+            }
+
+            50% {
+                left: 10%;
+            }
+
+            75% {
+                left: 5%;
+            }
+
+            100% {
+                left: 10%;
+            }
+        }
+
+        /* Zoom In Animation */
+        .zoom-in {
+            transform: scale(1);
+            opacity: 1;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .zoom-in:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Discord icon styling */
+        .discord-icon {
+            width: 40px;
+            height: 40px;
+            fill: #7289da;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Dynamic Card Sizing */
+        .card {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .card-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Custom Gradient for Footer and Contact Section */
+        .contact-footer-bg {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300">
+
+    <!-- Falling Leaves Effect -->
+    <div class="falling-images">
+        <img src="https://i.imgur.com/TM7l53b.png" alt="falling leaf 1" style="left: 10%; animation-delay: 0s; width: 50px;">
+        <img src="https://i.imgur.com/TM7l53b.png" alt="falling leaf 2" style="left: 40%; animation-delay: 2s; width: 50px;">
+        <img src="https://i.imgur.com/TM7l53b.png" alt="falling leaf 3" style="left: 70%; animation-delay: 1s; width: 50px;">
+        <img src="https://i.imgur.com/TM7l53b.png" alt="falling leaf 4" style="left: 20%; animation-delay: 3s; width: 50px;">
+        <img src="https://i.imgur.com/TM7l53b.png" alt="falling leaf 5" style="left: 60%; animation-delay: 4s; width: 50px;">
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full p-4 bg-black bg-opacity-70 text-white flex justify-between items-center z-10">
+        <div class="text-3xl font-bold text-blue-400">
+            fedswtsmp
+        </div>
+        <nav>
+            <ul class="flex space-x-6">
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="flex items-center justify-center min-h-screen text-center bg-cover bg-center relative" style="background-image: url('https://www.minecraft.net/content/dam/minecraft/consumer-assets/social/og-image-share-v2.jpg');">
+        <div class="bg-black bg-opacity-60 w-full h-full absolute top-0 left-0"></div>
+        <div class="relative z-10 text-white">
+            <h1 class="text-5xl font-extrabold text-blue-300 mb-4 animate__animated animate__fadeInUp">Welcome to fedswtsmp</h1>
+            <p class="text-xl mb-6 opacity-0 animate__animated animate__fadeIn animate__delay-1s">Join our awesome Minecraft server now and start your adventure!</p>
+            <div class="space-y-4">
+                <p><strong class="text-blue-400">IP:</strong> play.fedswtf.xyz</p>
+                <p><strong class="text-blue-400">Port:</strong> 25792</p>
+                <button id="copy-ip" class="bg-blue-400 text-black px-6 py-2 rounded-lg transition-all hover:bg-blue-500 zoom-in">Copy IP</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="contact-footer-bg text-white text-center py-4 zoom-in">
+        <p>&copy; 2025 fedswtsmp Minecraft Server. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Sticky Header Effect
+        window.onscroll = function () {
+            let header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-opacity-90');
+            } else {
+                header.classList.remove('bg-opacity-90');
+            }
+        };
+
+        // Copy IP to Clipboard
+        document.getElementById('copy-ip').addEventListener('click', function () {
+            const ip = 'play.fedswtf.xyz:25792';
+            navigator.clipboard.writeText(ip).then(() => {
+                alert('IP copied to clipboard: ' + ip);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
